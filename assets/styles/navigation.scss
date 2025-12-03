@@ -1,0 +1,234 @@
+.navigation {
+    background-color: rgb(0, 35, 102);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    position: fixed;
+    top: 0;
+}
+
+.navigation-siteInfoContainer {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: 100%;
+}
+
+.navigation-siteInfoContainer_siteLogo img {
+    width: 110px;
+}
+
+.navigation-siteInfoContainer__siteTitles {
+    padding: 0 20px;
+    margin: -6px 0 0 0;
+}
+
+.navigation-siteInfoContainer__siteTitles h1 {
+    font-size: 2.375em;
+    font-family: "Cal Sans", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+}
+
+.navigation-siteInfoContainer__siteTitles h2 {
+    font-size: 1.375em;
+    font-weight: 200;
+    font-family: "Barlow Condensed", sans-serif;
+    font-style: normal;
+}
+
+.navigation-siteInfoContainer__siteTitles h1,
+.navigation-siteInfoContainer__siteTitles h2 
+{
+    line-height: 1;
+}
+
+.navigation-menuContainer_menuItems {
+    display: flex;
+}
+
+.navigation-menuContainer_menuItems ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navigation-menuContainer_menuItems li {
+    margin: 0 6px;
+    padding: 0 6px;
+}
+
+.navigation-menuContainer_menuItems a {
+    opacity: 1;
+    transition: .15s ease;
+    font-family: "Teko", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 28px;
+}
+
+.blogLink {
+    background-color: orange;
+    border-radius: 12px;
+    color: #222;
+    padding: 2px 20px;
+    transition: .15s ease;
+    margin: 0 0 0 -6px
+}
+
+.blogLink:hover {
+    background-color: rgb(185, 120, 0);
+    transition: .15s ease;
+    cursor: pointer;
+    color: white;
+}
+
+.navigation-menuContainer_hamburgerMenu {
+    display: none;
+}
+
+.navigation-menuContainer {
+    display: flex;
+    height: 74px;
+    align-items: center;
+    justify-content: center;
+}
+
+.navigation-menuContainer_menuItems {
+    display: block;
+}
+
+.navigation-menuContainer_menuItems a:hover {
+    text-decoration: underline;
+    transition: .15s ease;
+}
+
+.navigation-menuContainer_socialMenu {
+    display: inline-grid;
+    width: 86px;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+}
+
+.navigation-menuContainer_socialMenu ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navigation-menuContainer_socialMenu li {
+    margin: 5px 3px 0 3px;
+}
+
+.navigation-menuContainer_socialMenu a {
+    opacity: 1;
+    transition: .15s ease;
+}
+
+.navigation-menuContainer_socialMenu a:hover {
+    opacity: .85;
+    transition: .15s ease;
+}
+
+.navigation-menuContainer_mobileMenu {
+    align-items: center;
+    background-color: rgb(0, 35, 102);
+    display: grid;
+    height: calc(100vh - 96px);
+    justify-content: center;
+    left: 0;
+    position: fixed;
+    top: 96px;
+    width: 100%;
+}
+
+.navigation-menuContainer_mobileMenu ul li {
+    text-align: center;
+}
+
+.navigation-menuContainer_mobileMenu ul li a {
+    font-size: 3em;
+    font-family: "Teko", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-weight: 300;
+}
+
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
+
+@media (width <= 64rem) {
+
+    .navigation-siteInfoContainer_siteLogo img {
+        width: 80px;
+    }
+    
+    .navigation-siteInfoContainer__siteTitles {
+        padding: 0 20px;
+        margin: -6px 0 0 0;
+    }
+
+    .navigation-siteInfoContainer__siteTitles h1 {
+        font-size: 1.75em;
+    }
+
+    .navigation-siteInfoContainer__siteTitles h2 {
+        font-size: 1.125em;
+    }
+
+    .navigation-menuContainer_menuItems {
+        display: block;
+    }
+
+    .navigation-menuContainer_menuItems li {
+        margin: 0 4px;
+        padding: 0 4px;
+    }
+
+    .navigation-menuContainer_menuItems a {
+        font-size: 20px;
+    }
+
+    .navigation-menuContainer_socialMenu {
+        display: inline-grid;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .blogLink {
+        padding: 2px 12px;
+        transition: .15s ease;
+        margin: 0 0 0 -6px
+    }
+
+    .navigation-menuContainer_hamburgerMenu {
+        display: none;
+    }
+
+}
+
+@media (width <= 48rem) {
+
+    .navigation-menuContainer_hamburgerMenu {
+        display: block;
+    }
+
+    .navigation-menuContainer {
+        display: none;
+        align-items: center;
+        justify-content: center;
+    }
+
+}

@@ -1,0 +1,33 @@
+* {
+    color: #000;
+}
+
+body {
+    background: #e8e8e8;
+    overflow-x: hidden;
+}
+
+.container {
+    padding: 20px;
+    width: 1280px;
+    margin: 0 auto;
+    margin-top: 120px;
+}
+
+@media (prefers-color-scheme: dark) {
+    * {
+        color: #fff;
+    }
+
+    body {
+        background: #252525;
+    }
+}
+
+@media (width <= 48rem) {
+
+    .container {
+        margin-top: 96px;
+    }
+    
+}

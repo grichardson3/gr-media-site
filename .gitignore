@@ -23,6 +23,5 @@ logs
 .env.*
 !.env.example
 
-# ignore video files for uploading to github
-
-public/videos/
+# misc
+secret.txt
