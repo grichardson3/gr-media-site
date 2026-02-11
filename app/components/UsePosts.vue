@@ -12,7 +12,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="container">
+  <div>
     <div
       class="grid grid-cols-2 lg:grid-cols-2 p-6"
       id="posts"
@@ -27,19 +27,27 @@ onMounted(async () => {
           :to="post.uri"
         >
           <div class="post_text">
-            <h1 class="post_title">{{ post.title }}</h1>
-            <span class="post_DateText">
-              Posted at: {{ dayjs(post.date).format('MMM D, YYYY') }} on {{ dayjs(post.date).format('hh:ma') }}
-            </span>
+            <NuxtLink :to="post.uri">
+              <h2 class="post_title">{{ post.title }}</h2>
+            </NuxtLink>
+            <NuxtLink :to="post.uri">
+              <span class="post_DateText">
+                Posted at: {{ dayjs(post.date).format('MMM D, YYYY') }} on {{ dayjs(post.date).format('hh:ma') }}
+              </span>
+            </NuxtLink>
           </div>
-          <img
-            v-if="post?.featuredImage?.node?.sourceUrl"
-            :src="post.featuredImage.node.sourceUrl"
-            class="w-full rounded-md post_imageContainer"
-          >
-          <div class="post_excerpt">
-            <span v-sanitize="post.excerpt" />
-          </div>
+          <NuxtLink :to="post.uri">
+            <img
+              v-if="post?.featuredImage?.node?.sourceUrl"
+              :src="post.featuredImage.node.sourceUrl"
+              class="w-full rounded-md post_imageContainer"
+            >
+          </NuxtLink>
+          <NuxtLink :to="post.uri">
+            <div class="post_excerpt">
+              <span v-sanitize="post.excerpt" />
+            </div>
+          </NuxtLink>
       </div>
       </div>
       <div v-else>

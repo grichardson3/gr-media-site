@@ -87,6 +87,10 @@
     color: white;
 }
 
+.navigation-menuContainer_mobileMenu .blogLink {
+    padding: 0 30%;
+}
+
 .navigation-menuContainer_hamburgerMenu {
     display: none;
 }
@@ -140,7 +144,7 @@
     background-color: rgb(0, 35, 102);
     display: grid;
     height: calc(100vh - 96px);
-    justify-content: center;
+    justify-content: space-around;
     left: 0;
     position: fixed;
     top: 96px;
@@ -157,6 +161,28 @@
     font-optical-sizing: auto;
     font-style: normal;
     font-weight: 300;
+    opacity: 1;
+}
+
+.navigation-menuContainer_mobileMenu ul li a:hover {
+    opacity: 0.85;
+    transition: .15s ease;
+}
+
+.navigation-menuContainer_mobileSocialMenu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navigation-menuContainer_mobileSocialMenu div {
+    margin: 4px;
+    opacity: 1;
+}
+
+.navigation-menuContainer_mobileSocialMenu div:hover {
+    opacity: 0.85;
+    transition: .15s ease;
 }
 
 .v-enter-active,

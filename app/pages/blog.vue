@@ -6,13 +6,16 @@
     const { data: settings } = await useAsyncData('settings', () => useWPGeneralSettings())
 
     useHead({
-        title: settings.value?.data?.title
+        title: "Blog"
     });
 
 </script>
 
 <template>
     <div class="container">
-        <h2>Gareth Richardson Home Page</h2>
+        <NuxtLayout>
+            <h1>Blog Posts</h1>
+            <UsePosts/>
+        </NuxtLayout>
     </div>
 </template>

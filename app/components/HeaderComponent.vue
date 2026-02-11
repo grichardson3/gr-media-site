@@ -120,11 +120,15 @@
                     <li><NuxtLink to="/">Home</NuxtLink></li>
                     <li><NuxtLink to="/about">About</NuxtLink></li>
                     <li><NuxtLink to="/contact">Contact</NuxtLink></li>
-                    <li><NuxtLink to="/blog">Blog</NuxtLink></li>
+                    <li><NuxtLink class="blogLink" to="/blog">Blog</NuxtLink></li>
                 </ul>
+                <div class="navigation-menuContainer_mobileSocialMenu" style="display: flex;">
+                    <div><a href="https://www.facebook.com" title="Facebook"><img src="\img\facebook-round-svgrepo-com.svg" alt="Facebook Logo" width="64"></a></div>
+                    <div><a href="https://www.youtube.com" title="YouTube"><img src="\img\youtube-round-svgrepo-com.svg" alt="YouTube Logo" width="64"></a></div>
+                    <div><a href="https://www.linkedin.com" title="LinkedIn"><img src="\img\linkedin-round-svgrepo-com.svg" alt="LinkedIn Logo" width="64"></a></div>
+                    <div><a href="https://www.github.com" title="Github"><img src="\img\github-round-svgrepo-com.svg" alt="Github Logo" width="64"></a></div>
+                </div>
             </div>
         </Transition>
     </div>
-    
-    
 </template>

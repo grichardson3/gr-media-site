@@ -6,13 +6,13 @@
     const { data: settings } = await useAsyncData('settings', () => useWPGeneralSettings())
 
     useHead({
-        title: settings.value?.data?.title
+        title: "Contact"
     });
 
 </script>
 
 <template>
     <div class="container">
-        <h2>Gareth Richardson Home Page</h2>
+        <h2>Contact Me!</h2>
     </div>
 </template>
