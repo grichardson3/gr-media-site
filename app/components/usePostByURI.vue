@@ -12,7 +12,6 @@
     onMounted(async () => {
         const { data } = await useWPPostByUri({ uri: route.path })
         post.value = data || []
-        console.log(post.value)
     });
 
 </script>

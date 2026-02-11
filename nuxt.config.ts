@@ -7,7 +7,8 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss'
   ],
   wpNuxt: {
-      wordpressUrl: 'http://localhost/wordpress_sixeightthree',
+      // wordpressUrl: 'http://localhost/wordpress_sixeightthree',
+      wordpressUrl: 'http://3.148.164.163'
       // frontendUrl: 'http://localhost:3000'
       // wordpressUrl: 'https://wordpress.wpnuxt.com'
   },

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+
 import { onMounted, ref } from 'vue'
 import type { PostFragment } from '#graphql-operations'
 import { useWPPosts } from '#wpnuxt'
