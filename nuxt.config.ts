@@ -8,7 +8,7 @@ export default defineNuxtConfig({
   ],
   wpNuxt: {
       // wordpressUrl: 'http://localhost/wordpress_sixeightthree',
-      wordpressUrl: 'http://3.148.164.163'
+      wordpressUrl: 'https://api.garethrichardson.ca'
       // frontendUrl: 'http://localhost:3000'
       // wordpressUrl: 'https://wordpress.wpnuxt.com'
   },
