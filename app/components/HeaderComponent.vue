@@ -65,18 +65,20 @@
 <template>
     <div class="navigation relative w-full p-4 h-85px mx-auto bg-darkblue-800">
         <div class="navigation-siteInfoContainer">
-            <div
-                class="navigation-siteInfoContainer_siteLogo"
-            >
-                <img 
-                    src="\img\GR_Technology_Fix_Final_Small.svg"
-                    alt="Gareth Richardson Technology & Media Logo"
-                >
+            <div class="navigation-siteInfoContainer_siteLogo">
+                <NuxtLink to="/">
+                    <img 
+                        src="\img\GR_Technology_Fix_Final_Small.svg"
+                        alt="Gareth Richardson Technology & Media Logo"
+                    >
+                </NuxtLink>
             </div>
-            <div class="navigation-siteInfoContainer__siteTitles">
-                <h1 id="siteTitle">{{ site.title }}</h1>
-                <h2 id="siteTagline" v-if="site.description">{{ site.description }}</h2>
-            </div>
+            <NuxtLink to="/">
+                <div class="navigation-siteInfoContainer__siteTitles">
+                    <h1 id="siteTitle">{{ site.title }}</h1>
+                    <h2 id="siteTagline" v-if="site.description">{{ site.description }}</h2>
+                </div>
+            </NuxtLink>
         </div>
         <div class="navigation-menuContainer">
             <div class="navigation-menuContainer_menuItems">

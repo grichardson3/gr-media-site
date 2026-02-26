@@ -4,12 +4,14 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: [
     '@wpnuxt/core',
-    '@nuxtjs/tailwindcss'
+    '@nuxtjs/tailwindcss',
+    '@nuxt/image',
   ],
   wpNuxt: {
       // wordpressUrl: 'http://localhost/wordpress_sixeightthree',
       wordpressUrl: 'https://noisetacticz.com'
       // frontendUrl: 'http://localhost:3000'
+      // wordpressUrl: 'http://wordpress-sixnineone.demo'
       // wordpressUrl: 'https://wordpress.wpnuxt.com'
   },
   css: [

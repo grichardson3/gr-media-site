@@ -1,6 +1,4 @@
-* {
-    color: #000;
-}
+* { color: #000; }
 
 body {
     background: #e8e8e8;
@@ -8,26 +6,209 @@ body {
 }
 
 .container {
-    padding: 20px;
-    width: 1280px;
-    margin: 0 auto;
+    margin: 50px auto;
+    max-width: 960px;
+    padding: 40px 45px 60px 45px;
+    border-radius: 24px;
+}
+
+:root {
+  --bg-color: #5085ba;
+  --typewriterSpeed: .8s;
+  --typewriterSpeedH2-1: .4s;
+  --typewriterSpeedH2-2: .525s;
+  --typewriterSpeedH2-3: .475s;
+  --typewriterCharacters: 17;
+  --typewriterCharactersH2-1: 12;
+  --typewriterCharactersH2-2: 17;
+  --typewriterCharactersH2-3: 15;
+}
+
+.heroContainer, .heroContainerMobile {
+    width: 100%;
+    height: 800px;
+    padding: 30px;
+    background: linear-gradient(245deg, #5085ba, #151e3d);
+    background-size: 300% 250%;
+
+    -webkit-animation: AnimationName 6s ease infinite;
+    -moz-animation: AnimationName 6s ease infinite;
+    -o-animation: AnimationName 6s ease infinite;
+    animation: AnimationName 6s ease infinite;
+
+    align-items: center;
+    justify-content: space-evenly;
+    text-align: center;
+}
+
+.heroContainer {
+    display: grid;
     margin-top: 120px;
 }
 
+.heroContainerMobile {
+    display: none;
+    margin-top: 96px;
+}
+
+@-webkit-keyframes AnimationName {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@-moz-keyframes AnimationName {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@keyframes AnimationName {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+
+.heroContainer a {
+    text-decoration: none;
+}
+
+.heroContainer h1, .heroContainerMobile h1 {
+    font-family: "Cal Sans";
+    font-weight: 300;
+    width: max-content;
+    position: relative;
+    letter-spacing: .05em;
+}
+
+.heroContainer h1 {
+    font-size: clamp(2.5rem, 3vw + 2rem, 7rem);
+    line-height: 1.75;
+    margin-bottom: 20px;
+}
+
+.heroContainer_h2 h2 {
+    line-height: 1em;
+    margin-bottom: 12px;
+}
+
+.heroContainerMobile h1 {
+    font-size: clamp(3.5rem, 2vw + 2rem, 5rem);
+    line-height: 1;
+    margin-bottom: .5em;
+}
+
+.heroContainer_h2_1, .heroContainer_h2_2, .heroContainer_h2_3 {
+    font-size: clamp(3rem, 1.5vw + 2rem, 6rem);
+    width: max-content;
+    position: relative;
+    margin: 0 auto;
+}
+
+.heroContainer h1::before, .heroContainerMobile h1::before, .heroContainer h1::after, .heroContainerMobile h1::after {
+  content: ""; position: absolute; top: 0; right: 0; bottom: 0; left: 0;
+}
+
+.heroContainer_h2_1::before, .heroContainer_h2_2::before, .heroContainer_h2_3::before,
+.heroContainer_h2_1::after, .heroContainer_h2_2::after, .heroContainer_h2_3::after {
+  content: ""; position: absolute; top: 0; right: 0; bottom: 0; left: 0;
+}
+
+.heroContainer h1:before, .heroContainerMobile h1:before {
+    background: var(--bg-color);
+    animation: typewriter var(--typewriterSpeed)
+    steps(var(--typewriterCharacters)) .5s forwards;
+}
+
+.heroContainer h1::after, .heroContainerMobile h1::after {
+  width: 0.031em;
+  background: transparent;
+  animation: typewriter var(--typewriterSpeed)
+      steps(var(--typewriterCharacters)) .5s forwards,
+    blink 750ms steps(var(--typewriterCharacters)) 2.5;
+}
+
+.heroContainer_h2_1:before {
+    background: var(--bg-color);
+    animation: typewriter2 var(--typewriterSpeedH2-1)
+    steps(var(--typewriterCharactersH2-1)) 1.5s forwards;
+}
+
+.heroContainer_h2_2:before {
+    background: var(--bg-color);
+    animation: typewriter3 var(--typewriterSpeedH2-2)
+    steps(var(--typewriterCharactersH2-2)) 1.5s forwards;
+}
+
+.heroContainer_h2_3:before {
+    background: var(--bg-color);
+    animation: typewriter4 var(--typewriterSpeedH2-3)
+    steps(var(--typewriterCharactersH2-3)) 1.5s forwards;
+}
+
+.heroContainer_h2_1::after {
+  width: 0.031em;
+  background: transparent;
+  animation: typewriter2 var(--typewriterSpeedH2-1)
+      steps(var(--typewriterCharactersH2-1)) 1.5s forwards,
+    blink 750ms steps(var(--typewriterCharactersH2-1)) 3.25;
+}
+
+.heroContainer_h2_2::after {
+  width: 0.031em;
+  background: transparent;
+  animation: typewriter3 var(--typewriterSpeedH2-2)
+      steps(var(--typewriterCharactersH2-2)) 1.5s forwards,
+    blink 750ms steps(var(--typewriterCharactersH2-2)) 3.25;
+}
+
+.heroContainer_h2_3::after {
+  width: 0.031em;
+  background: transparent;
+  animation: typewriter4 var(--typewriterSpeedH2-3)
+      steps(var(--typewriterCharactersH2-3)) 1.5s forwards,
+    blink 750ms steps(var(--typewriterCharactersH2-3)) 3.25;
+}
+
+@keyframes typewriter { to { left: 100%; }}
+@keyframes typewriter2 { to { left: 100%; }}
+@keyframes typewriter3 { to { left: 100%; }}
+@keyframes typewriter4 { to { left: 100%; }}
+
+@keyframes blink { to { background: white; }}
+
+@keyframes fadeInUp { to { opacity: 1; transform: translateY(0); }}
+
+.heroContainer_h2 {
+    line-height: 1.25;
+    justify-content: center;
+    display: grid;
+}
+
 @media (prefers-color-scheme: dark) {
-    * {
-        color: #fff;
+    * { color: #fff; } 
+    body { background: #252525; } 
+    .container { background: #1c1c1c; }
+} // Auto Dark Theme Defaults
+
+@media (width <= 64rem) {
+
+    .container {
+        margin: 0 auto;
+        border-radius: 0;
     }
 
-    body {
-        background: #252525;
+    .heroContainer {
+        margin-top: 96px;
     }
 }
 
 @media (width <= 48rem) {
 
-    .container {
-        margin-top: 96px;
+    .heroContainerMobile {
+        display: grid;
+    }
+
+    .heroContainer {
+        display: none;
     }
     
 }

@@ -42,11 +42,11 @@ onMounted(async () => {
               v-if="post?.featuredImage?.node?.sourceUrl"
               :src="post.featuredImage.node.sourceUrl"
               class="w-full rounded-md post_imageContainer"
-            >
+            />
           </NuxtLink>
           <NuxtLink :to="post.uri">
             <div class="post_excerpt">
-              <span v-sanitize="post.excerpt" />
+              <span v-sanitize="post.excerpt"></span>
             </div>
           </NuxtLink>
       </div>

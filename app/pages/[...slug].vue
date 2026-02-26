@@ -24,3 +24,9 @@
         <PrevNext/>
     </NuxtLayout>
 </template>
+
+<style scoped>
+    .container {
+        margin-top: 160px;
+    }
+</style>
