@@ -3,16 +3,16 @@
   import { useAsyncData } from '#imports'
   import { useWPPostsByCategoryName } from '#wpnuxt'
   import dayjs from 'dayjs'
-
-  const props = defineProps<{
+  
+  let props = defineProps<{
     categoryName: string
-  }>()
-
-  let categoryNameList = [];
+  }>();
 
   const { data: postsByCategory } = await useAsyncData('postsByCategory', () =>
     useWPPostsByCategoryName({ categoryName: props.categoryName })
-  )
+  );
+
+  let categoryNameList = [];
 
   postsByCategory.value.data.forEach(element => {
     element.categories.nodes.forEach(el => {
@@ -20,14 +20,20 @@
     });
   });
 
+  const img = useImage();
+  const loaded = ref(false);
+  onMounted(() => {
+      if (process.client) {
+          setTimeout(() => {
+              loaded.value = true;
+          }, 1000);
+      }
+  });
+
 </script>
 
 <template>
-  <div
-    class="grid sm:grid-cols-1 lg:grid-cols-2 p-6"
-    id="posts"
-    title="Blog posts"
-  >
+  <div class="grid sm:grid-cols-1 lg:grid-cols-2 p-6" id="posts" title="Blog posts">
     <div
       v-if="postsByCategory?.data?.length > 0"
       id="postsByCategory"
@@ -38,7 +44,10 @@
           v-for="post, index in postsByCategory?.data"
           :key="index"
         >
-          <div class="post_text">
+          <div
+            v-if="loaded"
+            class="post_text"
+          >
             <NuxtLink :to="post.uri">
               <h3 class="post_title">{{ post.title }}</h3>
             </NuxtLink>
@@ -74,9 +83,14 @@
               </div>
             </NuxtLink>
           </div>
+          <div v-else>
+              <PostPlaceholder/>
+          </div>
         </li>
       </ul>
     </div>
+    <div v-else>
+      <h2>No posts available...</h2>
+    </div>
   </div>
-  
 </template>

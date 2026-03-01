@@ -185,8 +185,16 @@ body {
 
 @media (prefers-color-scheme: dark) {
     * { color: #fff; } 
-    body { background: #252525; } 
-    .container { background: #1c1c1c; }
+    body { background: #23242b; } 
+    .container { background: #17191f; }
+    .post_text { background: #3a3a42; }
+} // Auto Dark Theme Defaults
+
+@media (prefers-color-scheme: light) {
+    * { color: #000; } 
+    body { background: #d8d8d8; } 
+    .container { background: #ebebeb; }
+    .post_text { background: #c1c1c1; }
 } // Auto Dark Theme Defaults
 
 @media (width <= 64rem) {

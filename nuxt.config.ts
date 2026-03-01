@@ -8,11 +8,11 @@ export default defineNuxtConfig({
     '@nuxt/image',
   ],
   wpNuxt: {
-      // wordpressUrl: 'http://localhost/wordpress_sixeightthree',
-      wordpressUrl: 'https://noisetacticz.com'
+      /*Live Site*/ // wordpressUrl: 'https://noisetacticz.com'
+      /*localhost*/ wordpressUrl: 'http://localhost/wordpress_sixnineone'
+      /*Demo Site*/ // wordpressUrl: 'https://wordpress.wpnuxt.com'
+
       // frontendUrl: 'http://localhost:3000'
-      // wordpressUrl: 'http://wordpress-sixnineone.demo'
-      // wordpressUrl: 'https://wordpress.wpnuxt.com'
   },
   css: [
     "../assets/styles/main.scss",

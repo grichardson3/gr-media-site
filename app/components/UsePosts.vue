@@ -9,6 +9,7 @@ const posts = ref<PostFragment[]>([])
 onMounted(async () => {
   const { data } = await useWPPosts()
   posts.value = data || []
+  console.log(posts.value)
 })
 </script>
 
