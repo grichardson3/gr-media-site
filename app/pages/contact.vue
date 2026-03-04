@@ -16,3 +16,9 @@
         <h2>Contact Me!</h2>
     </div>
 </template>
+
+<style scoped>
+    .container {
+        margin-top: 160px;
+    }
+</style>

@@ -84,7 +84,7 @@
             <div class="navigation-menuContainer_menuItems">
                 <ul>
                     <li><NuxtLink to="/">Home</NuxtLink></li>
-                    <li><NuxtLink to="/about">About</NuxtLink></li>
+                    <li><NuxtLink to="/portfolio">Portfolio</NuxtLink></li>
                     <li><NuxtLink to="/contact">Contact</NuxtLink></li>
                     <li><NuxtLink to="/blog" class="blogLink">Blog</NuxtLink></li>
                 </ul>
@@ -120,7 +120,7 @@
             >
                 <ul>
                     <li><NuxtLink to="/">Home</NuxtLink></li>
-                    <li><NuxtLink to="/about">About</NuxtLink></li>
+                    <li><NuxtLink to="/portfolio">Portfolio</NuxtLink></li>
                     <li><NuxtLink to="/contact">Contact</NuxtLink></li>
                     <li><NuxtLink class="blogLink" to="/blog">Blog</NuxtLink></li>
                 </ul>

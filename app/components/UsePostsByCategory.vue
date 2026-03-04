@@ -1,9 +1,11 @@
 <script setup lang="ts">
 
-  import { useAsyncData } from '#imports'
-  import { useWPPostsByCategoryName } from '#wpnuxt'
+  import { useWPPostsByCategoryName, useWPPostByUri } from '#wpnuxt'
+  import { useAsyncData, useRoute } from '#imports'
   import dayjs from 'dayjs'
   
+  const route = useRoute();
+
   let props = defineProps<{
     categoryName: string
   }>();
@@ -12,17 +14,28 @@
     useWPPostsByCategoryName({ categoryName: props.categoryName })
   );
 
-  let categoryNameList = [];
-
-  postsByCategory.value.data.forEach(element => {
-    element.categories.nodes.forEach(el => {
-      categoryNameList.push(el.name);
-    });
-  });
+  let allPosts:any[] = [];
+  let postCategories:any[] = [];
 
   const img = useImage();
   const loaded = ref(false);
-  onMounted(() => {
+
+  onMounted(async () => {
+      const { data } = await useWPPostByUri({ uri: route.path });
+      route.value = data || [];
+
+      postsByCategory.value.data.forEach((el:any) => {
+        el.categoryNameArray = [];
+        el.categories?.nodes.forEach((element:any) => {
+            el.categoryNameArray.push(element.name);
+            if (!postCategories.includes(element.name)) {
+                postCategories.push(element.name);
+            }
+        });
+      });
+
+      allPosts = postsByCategory.value;
+
       if (process.client) {
           setTimeout(() => {
               loaded.value = true;
@@ -33,7 +46,8 @@
 </script>
 
 <template>
-  <div class="grid sm:grid-cols-1 lg:grid-cols-2 p-6" id="posts" title="Blog posts">
+  <h2 class="categoryTitle" >{{ route.path.split("/")[2] }}</h2>
+  <div class="grid sm:grid-cols-1 lg:grid-cols-1 p-6" id="posts" title="Blog posts">
     <div
       v-if="postsByCategory?.data?.length > 0"
       id="postsByCategory"
@@ -68,20 +82,20 @@
               </div>
               
             </NuxtLink>
-            <NuxtLink :to="post.uri">
-              <div class="post_excerpt">
-                <span v-sanitize="post.excerpt" />
-              </div>
-              <div class="post_category_tag__container">
-                <div 
-                  class="post_category_tag"
-                  v-for="postCategoryName, nameIndex in categoryNameList"
-                  :key="nameIndex"
-                >
+            <div class="post_excerpt">
+              <span v-sanitize="post.excerpt"></span>
+            </div>
+            <div class="post_category_tag__container">
+              <div 
+                class="post_category_tag"
+                v-for="postCategoryName, nameIndex in post.categoryNameArray"
+                :key="nameIndex"
+              >
+                <NuxtLink :to="`../category/${postCategoryName}`">
                   <span>{{ postCategoryName }}</span>
-                </div>
+                </NuxtLink>
               </div>
-            </NuxtLink>
+            </div>
           </div>
           <div v-else>
               <PostPlaceholder/>

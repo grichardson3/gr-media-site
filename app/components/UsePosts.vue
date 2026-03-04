@@ -6,17 +6,32 @@ import { useWPPosts } from '#wpnuxt'
 import dayjs from 'dayjs'
 
 const posts = ref<PostFragment[]>([])
+
+let allPosts:any[] = [];
+let postCategories:any[] = [];
+
 onMounted(async () => {
   const { data } = await useWPPosts()
   posts.value = data || []
-  console.log(posts.value)
+
+  posts.value.forEach((el:any) => {
+    el.categoryNameArray = [];
+    el.categories?.nodes.forEach((element:any) => {
+        el.categoryNameArray.push(element.name);
+        if (!postCategories.includes(element.name)) {
+            postCategories.push(element.name);
+        }
+    });
+  });
+
+  allPosts = posts.value;
+
 })
 </script>
 
 <template>
   <div>
     <div
-      class="grid grid-cols-2 lg:grid-cols-2 p-6"
       id="posts"
       title="Blog posts"
     >
@@ -28,29 +43,46 @@ onMounted(async () => {
           :description="post.date?.split('T')[0]"
           :to="post.uri"
         >
-          <div class="post_text">
-            <NuxtLink :to="post.uri">
-              <h2 class="post_title">{{ post.title }}</h2>
-            </NuxtLink>
-            <NuxtLink :to="post.uri">
-              <span class="post_DateText">
-                Posted at: {{ dayjs(post.date).format('MMM D, YYYY') }} on {{ dayjs(post.date).format('hh:ma') }}
-              </span>
-            </NuxtLink>
-          </div>
-          <NuxtLink :to="post.uri">
-            <img
-              v-if="post?.featuredImage?.node?.sourceUrl"
-              :src="post.featuredImage.node.sourceUrl"
-              class="w-full rounded-md post_imageContainer"
-            />
-          </NuxtLink>
-          <NuxtLink :to="post.uri">
-            <div class="post_excerpt">
-              <span v-sanitize="post.excerpt"></span>
+          <div class="grid grid-cols-3 lg:grid-cols-3 p-6">
+            <div class="col-span-1">
+              <NuxtLink :to="post.uri">
+                <div v-if="post?.featuredImage?.node?.sourceUrl">
+                  <img 
+                    :src="post.featuredImage.node.sourceUrl"
+                    class="w-full rounded-md post_imageContainer"
+                  >
+                </div>
+                <div v-else>
+                  <div class="post_imageContainer__placeholder"></div>
+                </div>
+              </NuxtLink>
             </div>
-          </NuxtLink>
-      </div>
+            <div class="post_text col-span-2 p-8">
+              <NuxtLink :to="post.uri">
+                <h2 class="post_title">{{ post.title }}</h2>
+              </NuxtLink>
+                <div style="margin-bottom: 12px;">
+                  <span class="post_DateText">
+                    Posted at: {{ dayjs(post.date).format('MMM D, YYYY') }} on {{ dayjs(post.date).format('hh:ma') }}
+                  </span>
+                </div>
+                <div class="post_category_tag__container">
+                    <div 
+                        class="post_category_tag"
+                        v-for="category in post.categoryNameArray"
+                        :key="category"
+                    >
+                    <NuxtLink :to="`category/${category}`">
+                        <span>{{ category }}</span>
+                    </NuxtLink>
+                    </div>
+                </div>
+                <div class="post_excerpt">
+                  <span v-sanitize="post.excerpt"></span>
+                </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div v-else>
         <PostPlaceholder

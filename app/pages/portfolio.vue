@@ -6,13 +6,19 @@
     const { data: settings } = await useAsyncData('settings', () => useWPGeneralSettings())
 
     useHead({
-        title: "About"
+        title: "Portfolio"
     });
 
 </script>
 
 <template>
     <div class="container">
-        <h2>About Me</h2>
+        <h2>Portfolio</h2>
     </div>
 </template>
+
+<style scoped>
+    .container {
+        margin-top: 160px;
+    }
+</style>

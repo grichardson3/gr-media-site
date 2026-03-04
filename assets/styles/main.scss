@@ -3,6 +3,9 @@
 body {
     background: #e8e8e8;
     overflow-x: hidden;
+    min-height: 100vh;
+    grid-template-rows: auto 1fr auto;
+    display: grid;
 }
 
 .container {
@@ -185,9 +188,9 @@ body {
 
 @media (prefers-color-scheme: dark) {
     * { color: #fff; } 
-    body { background: #23242b; } 
-    .container { background: #17191f; }
-    .post_text { background: #3a3a42; }
+    body { background: #1e1f2b; } 
+    .container { background: #161a23; }
+    .post_text { background: #353542; }
 } // Auto Dark Theme Defaults
 
 @media (prefers-color-scheme: light) {

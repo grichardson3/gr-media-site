@@ -21,10 +21,12 @@
     footer {
         height: 120px;
         background: rgb(0, 35, 102);
-        display: grid;
         align-items: center;
         justify-content: center;
         padding-top: 8px;
+        display: flex;
+        justify-content: space-evenly;
+        bottom: 0;
     }
 
     .footerMenu {
