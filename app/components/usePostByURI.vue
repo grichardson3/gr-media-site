@@ -33,7 +33,7 @@
                     Posted at: {{ dayjs(post.date).format('MMM D, YYYY') }} on {{ dayjs(post.date).format('hh:ma') }}
                 </span>
             </div>
-            <div class="post_category_tag__container">
+            <div class="post_category_tag__container mt-3 mb-3">
               <div 
                 class="post_category_tag"
                 v-for="postCategoryName, nameIndex in categoryNameList"
@@ -47,11 +47,11 @@
             <div v-if="post?.featuredImage?.node?.sourceUrl">
                 <img 
                     :src="post.featuredImage.node.sourceUrl"
-                    class="w-full rounded-md post_imageContainer m-8"
+                    class="w-full rounded-md post_imageContainer"
                 >
             </div>
             <div v-else>
-                <div class="post_imageContainer__placeholder mt-8 mr-8 mb-8"></div>
+                <div class="post_imageContainer__placeholder mt-8 mr-8 mb-4"></div>
             </div>
             <div class="post_excerpt">
                 <span v-sanitize="post.content"></span>
@@ -59,3 +59,19 @@
         </div>
     </div>
 </template>
+
+<style scoped>
+
+    .container {
+        min-height: calc(100vh - 300px);
+    }
+
+  .post_text {
+    background: none;
+  }
+
+  .post_imageContainer__image, .post_imageContainer__placeholder {
+    border-radius: 12px;
+  }
+
+</style>

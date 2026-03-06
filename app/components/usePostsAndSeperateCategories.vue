@@ -5,13 +5,17 @@
     import { useWPPosts } from '#wpnuxt'
     import dayjs from 'dayjs'
 
-    const posts = ref<PostFragment[]>([])
+    const posts = ref<PostFragment[]>([]);
+    const { data, pending, error } = await useWPPosts()
+
+    let errorMsg:any;
+    let pendingMsg:any;
 
     let allPosts:any[] = [];
     let postCategories:any[] = [];
 
     onMounted(async () => {
-        const { data } = await useWPPosts()
+        
         posts.value = data || []
 
         posts.value.forEach((el:any) => {
@@ -24,8 +28,11 @@
             });
         });
 
-        allPosts = posts.value;
+        pendingMsg = pending;
+        errorMsg = error;
     });
+
+    allPosts = posts.value;
 
 </script>
 
@@ -34,10 +41,11 @@
         <div id="posts" title="Blog posts">
             <div v-if="posts && posts.length > 0">
                 <div
+                class=""
                     v-for="category, catindex in postCategories"
                     :key="catindex"
                 >
-                    <h2 class="categoryTitle" >{{ category }}</h2>
+                    <h2 class="categoryTitle pl-6">{{ category }}</h2>
                     <div
                         v-for="post, index in posts"
                         :key="index"
@@ -47,20 +55,20 @@
                     >
                         <div 
                             v-if="post.categoryNameArray.includes(category)"
-                            class="grid grid-cols-3"
+                            class="grid grid-cols-3 pl-6 pr-6 pt-3"
                         > 
                             <NuxtLink :to="post.uri">
                                 <div v-if="post?.featuredImage?.node?.sourceUrl">
-                                    <img 
-                                        :src="post.featuredImage.node.sourceUrl"
-                                        class="w-full rounded-md post_imageContainer m-8"
-                                    >
+                                    <div
+                                        class="post_imageContainer__image mb-8"
+                                        :style="{ backgroundImage: 'url(' + post.featuredImage.node.sourceUrl + ')'}"
+                                    ></div>
                                 </div>
                                 <div v-else>
-                                    <div class="post_imageContainer__placeholder mt-8 mr-8 mb-8"></div>
+                                    <div class="post_imageContainer__placeholder mb-8"></div>
                                 </div>
                             </NuxtLink>
-                            <div class="post_text col-span-2 p-8">
+                            <div class="post_text col-span-2 p-6">
                                 <NuxtLink :to="post.uri">
                                     <h2 class="post_title">{{ post.title }}</h2>
                                 </NuxtLink>
@@ -89,15 +97,40 @@
                                 </NuxtLink>
                             </div>
                         </div>
+                        <div v-else-if="pendingMsg">
+                            <PostPlaceholder
+                                v-for="i in 1"
+                                :key="i"
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
-            <div v-else>
-                <PostPlaceholder
-                    v-for="i in 1"
-                    :key="i"
-                />
+            <div v-else-if="posts?.length === 0">
+                <div class="grid grid-cols-1 p-8">
+                    <h2>Error! No Posts</h2>
+                    <h3>Posts are unavailable, check back later...</h3>
+                </div>
             </div>
         </div>
     </div>
 </template>
+
+<style scoped>
+    .post_imageContainer__image {
+        border-bottom-left-radius: 12px;
+        border-top-left-radius: 12px;
+    }
+
+    .post_imageContainer__placeholder {
+        border-bottom-left-radius: 12px;
+        border-top-left-radius: 12px;
+    }
+
+    .post_text {
+        border-top-right-radius: 12px;
+        border-bottom-right-radius: 12px;
+        max-height: 320px;
+    }
+
+</style>

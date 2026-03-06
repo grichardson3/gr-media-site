@@ -3,7 +3,7 @@
     import { useHead, useAsyncData } from '#imports'
     import { useWPGeneralSettings } from '#wpnuxt'
     
-    const { data: settings } = await useAsyncData('settings', () => useWPGeneralSettings())
+    const { data: settings, pending, error } = await useAsyncData('settings', () => useWPGeneralSettings())
 
     useHead({
         title: settings.value?.data?.title
@@ -29,3 +29,9 @@
         <UsePostsAndSeperateCategories/>
     </div>
 </template>
+
+<style scoped>
+    .container {
+        min-height: 50vh;
+    }
+</style>

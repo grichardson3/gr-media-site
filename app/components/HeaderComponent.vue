@@ -7,8 +7,10 @@
     const site = ref<GeneralSettingsFragment[]>([]);
     const isVisible = ref(false);
 
+    let errorMsg;
+
     onMounted(async () => {
-        const { data } = await useWPGeneralSettings()
+        const { data, pending, error } = await useWPGeneralSettings();
         site.value = data || []
     });
 
@@ -75,7 +77,8 @@
             </div>
             <NuxtLink to="/">
                 <div class="navigation-siteInfoContainer__siteTitles">
-                    <h1 id="siteTitle">{{ site.title }}</h1>
+                    <h1 v-if="site.title" id="siteTitle">{{ site.title }}</h1>
+                    <h1 v-else id="siteTitle">Error!</h1>
                     <h2 id="siteTagline" v-if="site.description">{{ site.description }}</h2>
                 </div>
             </NuxtLink>

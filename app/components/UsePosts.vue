@@ -6,12 +6,16 @@ import { useWPPosts } from '#wpnuxt'
 import dayjs from 'dayjs'
 
 const posts = ref<PostFragment[]>([])
+const { data, pending, error } = await useWPPosts()
 
 let allPosts:any[] = [];
 let postCategories:any[] = [];
 
+let errorMsg;
+let pendingRes;
+
 onMounted(async () => {
-  const { data } = await useWPPosts()
+  
   posts.value = data || []
 
   posts.value.forEach((el:any) => {
@@ -23,6 +27,9 @@ onMounted(async () => {
         }
     });
   });
+
+  errorMsg = error;
+  pendingRes = pending;
 
   allPosts = posts.value;
 
@@ -47,10 +54,10 @@ onMounted(async () => {
             <div class="col-span-1">
               <NuxtLink :to="post.uri">
                 <div v-if="post?.featuredImage?.node?.sourceUrl">
-                  <img 
-                    :src="post.featuredImage.node.sourceUrl"
-                    class="w-full rounded-md post_imageContainer"
-                  >
+                  <div
+                      class="post_imageContainer__image mb-8"
+                      :style="{ backgroundImage: 'url(' + post.featuredImage.node.sourceUrl + ')'}"
+                  ></div>
                 </div>
                 <div v-else>
                   <div class="post_imageContainer__placeholder"></div>
@@ -84,12 +91,36 @@ onMounted(async () => {
           </div>
         </div>
       </div>
-      <div v-else>
+      <div v-else-if="posts?.length === 0">
+          <div class="grid grid-cols-1 p-8">
+              <h2>Error! No Posts</h2>
+              <h3>Posts are unavailable, check back later...</h3>
+          </div>
+      </div>
+      <div v-else-if="pendingRes" >
         <PostPlaceholder
-          v-for="i in 3"
+          v-for="i in 1"
           :key="i"
         />
       </div>
     </div>
   </div>
 </template>
+
+<style scoped>
+.post_imageContainer__image {
+        border-bottom-left-radius: 12px;
+        border-top-left-radius: 12px;
+    }
+
+    .post_imageContainer__placeholder {
+        border-bottom-left-radius: 12px;
+        border-top-left-radius: 12px;
+    }
+
+    .post_text {
+        border-top-right-radius: 12px;
+        border-bottom-right-radius: 12px;
+        max-height: 320px;
+    }
+</style>
