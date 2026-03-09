@@ -14,9 +14,9 @@
 			<div>
 				<h1>GARETH <br> RICHARDSON</h1>
 				<div class="heroContainer_h2">
-					<h2 class="heroContainer_h2_1">Technologist</h2>
-					<h2 class="heroContainer_h2_2">Software Engineer</h2>
-					<h2 class="heroContainer_h2_3">Content Creator</h2>
+					<h2 class="heroContainer_h2_1_mobile">Technologist</h2>
+					<h2 class="heroContainer_h2_2_mobile">Software Engineer</h2>
+					<h2 class="heroContainer_h2_3_mobile">Content Creator</h2>
 				</div>
 			</div>
 		</div>
@@ -75,7 +75,7 @@
 	@media (width <= 64rem) {
 
 		.noiseBar {
-			top: 162px;
+			display: none;
 		}
 
 		#vue-canvas {

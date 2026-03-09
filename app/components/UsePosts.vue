@@ -51,7 +51,7 @@ onMounted(async () => {
           :to="post.uri"
         >
           <div class="grid grid-cols-3 lg:grid-cols-3 p-6">
-            <div class="col-span-1">
+            <div class="lg:col-span-1">
               <NuxtLink :to="post.uri">
                 <div v-if="post?.featuredImage?.node?.sourceUrl">
                   <div

@@ -2,7 +2,7 @@
     <div>
         <footer>
             <div style="display:grid; justify-content: center; width: 100%;">
-                <p style="text-align: center;">Copyright &copy; Gareth Richardson Media <span>{{ copyDate }}</span> - All Rights Reserved</p>
+                <p style="text-align: center; margin-bottom: 6px;">Copyright &copy; Gareth Richardson Media <span>{{ copyDate }}</span> <br> All Rights Reserved</p>
                 <div class="footerMenu">
                     <NuxtLink to="/terms-and-conditions">Terms and Conditions</NuxtLink>
                     <NuxtLink to="/privacy-policy">Privacy Policy</NuxtLink>
@@ -39,4 +39,5 @@
         font-weight: 600;
         text-decoration: underline;
     }
+
 </style>

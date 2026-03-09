@@ -27,44 +27,51 @@ body {
   --typewriterCharactersH2-3: 15;
 }
 
-.heroContainer, .heroContainerMobile {
+.heroContainer {
     width: 100%;
     height: 800px;
     padding: 30px;
     background: linear-gradient(245deg, #5085ba, #151e3d);
     background-size: 300% 250%;
 
-    -webkit-animation: AnimationName 6s ease infinite;
-    -moz-animation: AnimationName 6s ease infinite;
-    -o-animation: AnimationName 6s ease infinite;
-    animation: AnimationName 6s ease infinite;
+    -webkit-animation: SmoothColorTransition 6s ease infinite;
+    -moz-animation: SmoothColorTransition 6s ease infinite;
+    -o-animation: SmoothColorTransition 6s ease infinite;
+    animation: SmoothColorTransition 6s ease infinite;
 
     align-items: center;
     justify-content: space-evenly;
     text-align: center;
-}
 
-.heroContainer {
     display: grid;
     margin-top: 120px;
 }
 
 .heroContainerMobile {
+    width: 100%;
+    height: 800px;
+    padding: 30px;
+    background: #264d74;
+
+    align-items: center;
+    justify-content: space-evenly;
+    text-align: center;
+
     display: none;
     margin-top: 96px;
 }
 
-@-webkit-keyframes AnimationName {
+@-webkit-keyframes SmoothColorTransition {
     0%{background-position:0% 50%}
     50%{background-position:100% 50%}
     100%{background-position:0% 50%}
 }
-@-moz-keyframes AnimationName {
+@-moz-keyframes SmoothColorTransition {
     0%{background-position:0% 50%}
     50%{background-position:100% 50%}
     100%{background-position:0% 50%}
 }
-@keyframes AnimationName {
+@keyframes SmoothColorTransition {
     0%{background-position:0% 50%}
     50%{background-position:100% 50%}
     100%{background-position:0% 50%}
@@ -94,19 +101,23 @@ body {
 }
 
 .heroContainerMobile h1 {
-    font-size: clamp(3.5rem, 2vw + 2rem, 5rem);
+    font-size: clamp(3rem, 2vw + 2rem, 5rem);
     line-height: 1;
     margin-bottom: .5em;
 }
 
 .heroContainer_h2_1, .heroContainer_h2_2, .heroContainer_h2_3 {
-    font-size: clamp(3rem, 1.5vw + 2rem, 6rem);
+    font-size: clamp(2rem, 1.5vw + 2rem, 6rem);
     width: max-content;
     position: relative;
     margin: 0 auto;
 }
 
-.heroContainer h1::before, .heroContainerMobile h1::before, .heroContainer h1::after, .heroContainerMobile h1::after {
+.heroContainer_h2_1_mobile, .heroContainer_h2_2_mobile, .heroContainer_h2_3_mobile {
+    font-size: 2.5rem;
+}
+
+.heroContainer h1::before, .heroContainer h1::after {
   content: ""; position: absolute; top: 0; right: 0; bottom: 0; left: 0;
 }
 
@@ -115,13 +126,13 @@ body {
   content: ""; position: absolute; top: 0; right: 0; bottom: 0; left: 0;
 }
 
-.heroContainer h1:before, .heroContainerMobile h1:before {
+.heroContainer h1:before {
     background: var(--bg-color);
     animation: typewriter var(--typewriterSpeed)
     steps(var(--typewriterCharacters)) .5s forwards;
 }
 
-.heroContainer h1::after, .heroContainerMobile h1::after {
+.heroContainer h1::after {
   width: 0.031em;
   background: transparent;
   animation: typewriter var(--typewriterSpeed)

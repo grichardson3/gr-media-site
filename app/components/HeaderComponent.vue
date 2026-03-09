@@ -7,15 +7,15 @@
     const site = ref<GeneralSettingsFragment[]>([]);
     const isVisible = ref(false);
 
-    let errorMsg;
-
     onMounted(async () => {
         const { data, pending, error } = await useWPGeneralSettings();
         site.value = data || []
     });
 
-    const toggleVisibility = () => {
+    const toggleVisibility = (buttonObj:any) => {
         isVisible.value = !isVisible.value;
+        // buttonObj.classList.toggle('opened');
+        // buttonObj.setAttribute('aria-expanded', buttonObj.classList.contains('opened'))
     };
 
 </script>
@@ -86,10 +86,11 @@
         <div class="navigation-menuContainer">
             <div class="navigation-menuContainer_menuItems">
                 <ul>
-                    <li><NuxtLink to="/">Home</NuxtLink></li>
-                    <li><NuxtLink to="/portfolio">Portfolio</NuxtLink></li>
-                    <li><NuxtLink to="/contact">Contact</NuxtLink></li>
-                    <li><NuxtLink to="/blog" class="blogLink">Blog</NuxtLink></li>
+                    <!--<li v-on:click="toggleVisibility"
+                onclick="this.classList.toggle('opened');this.setAttribute('aria-expanded', this.classList.contains('opened'))" aria-label="Main Menu"><NuxtLink to="/">Home</NuxtLink></li>--><li v-on:click="toggleVisibility"><NuxtLink to="/">Home</NuxtLink></li>
+                    <li v-on:click="toggleVisibility"><NuxtLink to="/portfolio">Portfolio</NuxtLink></li>
+                    <li v-on:click="toggleVisibility"><NuxtLink to="/contact">Contact</NuxtLink></li>
+                    <li v-on:click="toggleVisibility"><NuxtLink to="/blog" class="blogLink">Blog</NuxtLink></li>
                 </ul>
             </div>
             <div class="navigation-menuContainer_socialMenu">
@@ -104,10 +105,13 @@
             </div>
         </div>
         <div class="navigation-menuContainer_hamburgerMenu">
-            <button 
+            <!--<button 
                 class="menu"
                 v-on:click="toggleVisibility"
                 onclick="this.classList.toggle('opened');this.setAttribute('aria-expanded', this.classList.contains('opened'))" aria-label="Main Menu"
+            >--><button 
+                class="menu"
+                v-on:click="toggleVisibility"
             >
                 <svg width="64" height="64" viewBox="0 0 100 100">
                     <path class="line line1" d="M 20,29.000046 H 80.000231 C 80.000231,29.000046 94.498839,28.817352 94.532987,66.711331 94.543142,77.980673 90.966081,81.670246 85.259173,81.668997 79.552261,81.667751 75.000211,74.999942 75.000211,74.999942 L 25.000021,25.000058" />
@@ -122,10 +126,10 @@
                 class="navigation-menuContainer_mobileMenu"
             >
                 <ul>
-                    <li><NuxtLink to="/">Home</NuxtLink></li>
-                    <li><NuxtLink to="/portfolio">Portfolio</NuxtLink></li>
-                    <li><NuxtLink to="/contact">Contact</NuxtLink></li>
-                    <li><NuxtLink class="blogLink" to="/blog">Blog</NuxtLink></li>
+                    <li v-on:click="toggleVisibility"><NuxtLink to="/">Home</NuxtLink></li>
+                    <li v-on:click="toggleVisibility"><NuxtLink to="/portfolio">Portfolio</NuxtLink></li>
+                    <li v-on:click="toggleVisibility"><NuxtLink to="/contact">Contact</NuxtLink></li>
+                    <li v-on:click="toggleVisibility"><NuxtLink class="blogLink" to="/blog">Blog</NuxtLink></li>
                 </ul>
                 <div class="navigation-menuContainer_mobileSocialMenu" style="display: flex;">
                     <div><a href="https://www.facebook.com" title="Facebook"><img src="\img\facebook-round-svgrepo-com.svg" alt="Facebook Logo" width="64"></a></div>

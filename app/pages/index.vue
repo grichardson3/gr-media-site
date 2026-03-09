@@ -34,4 +34,11 @@
     .container {
         min-height: 50vh;
     }
+
+    @media (width <= 48rem) {
+        .container h1 {
+            line-height: 1em;
+            margin-bottom: 16px;
+        }
+    }
 </style>
